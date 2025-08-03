@@ -93,9 +93,3 @@ BSc Computer Science, 8th Semester
 Backend & Dashboard Developer
 
 
-```
-
----
-
-Let me know if you'd like this tailored with links, images, or GitHub badges!
-```
