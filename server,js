@@ -1,0 +1,35 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+
+// ✅ Middlewares
+app.use(express.json());
+
+// ✅ Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/lms', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('✅ MongoDB Connected'))
+.catch(err => console.log('❌ MongoDB Connection Error:', err));
+
+// ✅ Import routes (do this BEFORE using them)
+const authRoutes = require('./routes/auth');
+const bookRoutes = require('./routes/Book');
+const contactRoutes = require('./routes/contact');
+const borrowRoutes = require('./routes/borrow');
+const userRoutes = require('./routes/userRoutes');
+const dashboardRoute = require('./routes/dashboard');  // ✅ Dashboard route
+
+// ✅ Use routes (middleware)
+app.use('/api', authRoutes);              // /api/login etc.
+app.use('/api/books', bookRoutes);        // /api/books
+app.use('/api/contact', contactRoutes);   // /api/contact
+app.use('/api/borrow', borrowRoutes);     // /api/borrow
+app.use('/api/users', userRoutes);        // /api/users
+app.use('/api/dashboard', dashboardRoute); // ✅ /api/dashboard
+
+// ✅ Start server
+app.listen(3000, () => {
+  console.log('✅ Server running on http://localhost:3000');
+});
