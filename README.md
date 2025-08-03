@@ -65,10 +65,6 @@ ng serve
 
 Make sure MongoDB is running locally or configure your MongoDB URI in `.env`.
 
-## 📷 Screenshots
-
-> *Include dashboard screenshots, book list view, and contact form here*
-
 ## 📌 Usage
 
 * Add and manage books and users
